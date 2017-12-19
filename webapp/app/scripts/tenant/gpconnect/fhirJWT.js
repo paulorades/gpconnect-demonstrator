@@ -3,7 +3,7 @@
 angular.module('gpConnect')
         .factory('fhirJWTFactory', ['ProviderRouting', 'gpcResource', function (ProviderRouting, gpcResource) {
 
-            var getJWT = function (scope, operation, identifier) {
+            var getJWT = function (scope, operation, identifier, orgId) {
 
                 var persistantData = ProviderRouting.getPersistentData;
                 
@@ -52,6 +52,7 @@ angular.module('gpConnect')
                     oPayload.requested_scope = "patient/*." + operation;
                 } else {
                     oPayload.requested_record = {
+                        "id": orgId,
                         "resourceType": "Organization",
                         "identifier": [{
                                 "system": gpcResource.getConst("ID_ODS_ORGANIZATION_CODE"),

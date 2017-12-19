@@ -79,7 +79,7 @@ angular.module('gpConnect')
                     // so we can use that internal reference in the fhir model
                     Organization.findOrganisation($stateParams.patientId, localModel.sourceOrgId).then(function (localOrganizationFhirResourceResponse) {
                         for (var i = 0; i < localOrganizationFhirResourceResponse.data.identifier.length; i++) {
-                            if (localOrganizationFhirResourceResponse.data.identifier[i].system == "http://fhir.nhs.net/Id/ods-organization-code") {
+                            if (localOrganizationFhirResourceResponse.data.identifier[i].system == "https://fhir.nhs.uk/Id/ods-organization-code") {
                                 var sendingPracticeOdsCode = localOrganizationFhirResourceResponse.data.identifier[i].value;
                                 Organization.searchForOrganisation(recievingPracticeOdsCode, $stateParams.patientId, sendingPracticeOdsCode).then(function (sendingPracticeOrgResource) {
                                     if (sendingPracticeOrgResource.data.entry != undefined) {
@@ -131,14 +131,14 @@ angular.module('gpConnect')
                         "detail": [{"reference": "#1"}]
                     };
 
-                    OrderService.sendOrder($stateParams.patientId, fhirModel, $scope.newOrder.toOrg.odsCode).then(function (result) {
-                        localModel.orderDate = result.data.date;
+                    //OrderService.sendOrder($stateParams.patientId, fhirModel, $scope.newOrder.toOrg.odsCode).then(function (result) {
+                        //localModel.orderDate = result.data.date;
                         OrderService.saveOrder(localModel).then(function (result) {
                             $modalInstance.close();
                             $state.reload();
                             usSpinnerService.stop('orderCreate-spinner');
                         });
-                    });
+                    //});
                 }
 
             };
