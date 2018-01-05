@@ -38,10 +38,17 @@ public class WebTokenFactory {
             "application/fhir+json",            
             "application/fhir+xml",
             "application/json+fhir",
+            "application/xml+fhir"
+    );
+    private static final List<String> ACCEPT_VALUES = Arrays.asList(
+    		"application/fhir+json",            
+            "application/fhir+xml",
+            "application/json+fhir",
             "application/xml+fhir",
             "application/json",
             "application/xml",
-            "text/json"
+            "text/json",
+            "text/xml"
     );
     private IParser parser = null;
 
@@ -89,7 +96,7 @@ public class WebTokenFactory {
             acceptHeader = contentType;
         }
 
-        if (acceptHeader == null || !CONTENT_TYPES.contains(acceptHeader.split(";")[0])) {
+        if (acceptHeader == null || !ACCEPT_VALUES.contains(acceptHeader.split(";")[0])) {
             throw OperationOutcomeFactory.buildOperationOutcomeException(
                     new UnclassifiedServerFailureException(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Unsupported accept media type"),
                     SystemCode.BAD_REQUEST, IssueType.INVALID);
