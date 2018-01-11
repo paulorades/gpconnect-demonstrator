@@ -1,13 +1,13 @@
 GPConnect Demonstrator
 =========
-This README contains information related to developing, building and running the GP Connect Demonstrator.
+Este README contem informações relacionadas ao desenvolvimento, construção e execução do GP Connect Demonstrator.
 
 ### Requirements
-To develop and run the application locally you must have the following installed:
+Para rodar a aplicação localmente você precisará de:
 
-| Component | Description |
+| Componentw | Descrição |
 |---|---|
-| Git | A revision control system. |
+| Git | Sistema para Controle de Versões. |
 | NodeJS | An open source, cross-platform runtime environment for developing JavaScript applications. |
 | Java JDK 8 | The Java Development Kit, which includes the Java Runtime Environment (JRE). |
 | Maven 3 | A popular Java build tool. |
